@@ -2,8 +2,8 @@
  * YZM2031 - Lab Assignment 1
  * Problem 3: Stack-Based Expression Evaluator
  * 
- * Student Name: [YOUR NAME HERE]
- * Student ID: [YOUR ID HERE]
+ * Student Name: [Yunus Emre Yılmaz]
+ * Student ID: [24018015]
  * 
  * Instructions: Implement the TODO sections below
  */
@@ -45,10 +45,32 @@ int evaluatePostfix(const string& expression) {
     //   int num = stoi(token);
     
     stack<int> s;
-    
-    // Your implementation here
-    
-    return 0;  // Placeholder - return the final result
+    stringstream ss(expression);
+    string token;
+
+    while (ss >> token) {
+        if (token == "+" || token == "-" || token == "*" || token == "/") {
+            int var2 = s.pop();
+            int var1 = s.pop();
+
+            int result = 0;
+            if (token == "+") result = var1 + var2;
+            else if (token == "-") result = var1 - var2;
+            else if (token == "*") result = var1 * var2;
+            else if (token == "/") {
+                if (var2 == 0) {
+                    throw runtime_error("Division by zero");
+                }
+                result = var1 / var2;
+            }
+            s.push(result);
+        } 
+        else {
+            int num = stoi(token);
+            s.push(num);
+        }
+    }
+    return s.top();
 }
 
 // Test cases
