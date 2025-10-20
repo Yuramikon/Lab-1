@@ -2,8 +2,8 @@
  * YZM2031 - Lab Assignment 1
  * Problem 4: Circular Queue for Task Scheduling
  * 
- * Student Name: [YOUR NAME HERE]
- * Student ID: [YOUR ID HERE]
+ * Student Name: [Yunus Emre Yılmaz]
+ * Student ID: [24018015]
  * 
  * Instructions: Implement the TODO sections below
  */
@@ -37,10 +37,15 @@ public:
         // TODO: Implement enqueue
         // 1. Check if queue is full
         // 2. If full, return false
+        if (isFull()) return false;
         // 3. Update rearIndex using circular logic: (rearIndex + 1) % capacity
+        rearIndex = (rearIndex + 1) % capacity;
         // 4. Add task at rearIndex
+        tasks[rearIndex] = task;
         // 5. Increment count
+        count++;
         // 6. Return true
+        return true;
         
         return false;  // Placeholder
     }
@@ -49,10 +54,15 @@ public:
     string dequeue() {
         // TODO: Implement dequeue
         // 1. Check if queue is empty, throw exception if empty
+        if (isEmpty()) throw runtime_error("Queue is empty");
         // 2. Get task at frontIndex
+        string removedTask = tasks[frontIndex];
         // 3. Update frontIndex using circular logic: (frontIndex + 1) % capacity
+        frontIndex = (frontIndex + 1) % capacity;
         // 4. Decrement count
+        count--;
         // 5. Return the task
+        return removedTask;
         
         return "";  // Placeholder
     }
@@ -61,7 +71,9 @@ public:
     string front() const {
         // TODO: Implement front
         // 1. Check if queue is empty, throw exception if empty
+        if (isEmpty()) throw runtime_error("Queue is empty");
         // 2. Return task at frontIndex
+        return tasks[frontIndex];
         
         return "";  // Placeholder
     }
