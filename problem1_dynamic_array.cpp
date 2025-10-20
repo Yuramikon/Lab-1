@@ -33,7 +33,6 @@ private:
         delete[] data;
         // 5. Update data pointer to point to new array
         data = newArray;
-        delete[] newArray;
     }
 
 public:
@@ -41,7 +40,7 @@ public:
     DynamicArray(int initialCapacity = 10) {
         // TODO: Initialize the array
         // 1. Set capacity to initialCapacity
-        capacity = initialCapacity
+        capacity = initialCapacity;
         // 2. Set size to 0
         size = 0;
         // 3. Allocate memory for data array
@@ -53,6 +52,7 @@ public:
     ~DynamicArray() {
         // TODO: Free allocated memory
         delete[] data;
+        data = nullptr;
     }
 
     // Add element to end
@@ -63,7 +63,7 @@ public:
             resize();
        }
         // 2. Add value at index size
-        data[size] = value
+        data[size] = value;
         // 3. Increment size
         size++;
     }
@@ -73,7 +73,7 @@ public:
         // TODO: Implement insert function
         // 1. Validate index (0 <= index <= size)
         if (index < 0 || index > size) {
-            return;
+            return ;
         }
         else{
             // 2. Check if array is full, resize if needed
@@ -113,7 +113,7 @@ public:
         // TODO: Implement get function
         // 1. Validate index (0 <= index < size)
          if (index < 0 || index >= size) {
-            return;
+            return 0;
         }
         else{
             // 2. Return element at index
