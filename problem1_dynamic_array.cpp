@@ -2,8 +2,8 @@
  * YZM2031 - Lab Assignment 1
  * Problem 1: Dynamic Array Implementation
  * 
- * Student Name: [YOUR NAME HERE]
- * Student ID: [YOUR ID HERE]
+ * Student Name: [Yunus Emre Yılmaz]
+ * Student ID: [24018015]
  * 
  * Instructions: Implement the TODO sections below
  */
@@ -22,11 +22,18 @@ private:
     void resize() {
         // TODO: Implement resize function
         // 1. Double the capacity
+        capacity = capacity*2;
         // 2. Create a new array with new capacity
+        int* newArray = new int[capacity];
         // 3. Copy all elements from old array to new array
+        for (int i = 0; i < size; i++){
+            newArray[i] = data[i];   
+        }
         // 4. Delete old array
+        delete[] data;
         // 5. Update data pointer to point to new array
-        
+        data = newArray;
+        delete[] newArray;
     }
 
 public:
@@ -34,54 +41,84 @@ public:
     DynamicArray(int initialCapacity = 10) {
         // TODO: Initialize the array
         // 1. Set capacity to initialCapacity
+        capacity = initialCapacity
         // 2. Set size to 0
+        size = 0;
         // 3. Allocate memory for data array
+        data = new int[capacity];
         
     }
 
     // Destructor
     ~DynamicArray() {
         // TODO: Free allocated memory
-        
+        delete[] data;
     }
 
     // Add element to end
     void add(int value) {
         // TODO: Implement add function
         // 1. Check if array is full (size >= capacity)
-        // 2. If full, call resize()
-        // 3. Add value at index size
-        // 4. Increment size
-        
+       if (size >= capacity) {
+            resize();
+       }
+        // 2. Add value at index size
+        data[size] = value
+        // 3. Increment size
+        size++;
     }
 
     // Insert at specific position
     void insert(int index, int value) {
         // TODO: Implement insert function
         // 1. Validate index (0 <= index <= size)
-        // 2. Check if array is full, resize if needed
-        // 3. Shift elements from index to the right
-        // 4. Insert value at index
-        // 5. Increment size
-        
+        if (index < 0 || index > size) {
+            return;
+        }
+        else{
+            // 2. Check if array is full, resize if needed
+            if (size >= capacity) {
+                resize();
+            }
+            // 3. Shift elements from index to the right
+            for (int i = size; i > index; i--) {
+                data[i] = data[i-1];
+            }
+            // 4. Insert value at index
+            data[index] = value;
+            // 5. Increment size
+            size++;
+        }
     }
 
     // Remove element at index
     void remove(int index) {
         // TODO: Implement remove function
         // 1. Validate index (0 <= index < size)
-        // 2. Shift elements from index+1 to the left
-        // 3. Decrement size
-        
+        if (index < 0 || index >= size) {
+            return;
+        }
+        else{
+            // 2. Shift elements from index+1 to the left
+            for (int i = index; i < size - 1; i++) {
+                data[i] = data[i + 1];
+            }
+            // 3. Decrement size
+            size--;
+        }
     }
 
     // Get element at index
     int get(int index) const {
         // TODO: Implement get function
         // 1. Validate index (0 <= index < size)
-        // 2. Return element at index
-        
-        return 0;  // Placeholder
+         if (index < 0 || index >= size) {
+            return;
+        }
+        else{
+            // 2. Return element at index
+            return data[index];
+        }
     }
 
     // Return current size
