@@ -2,8 +2,8 @@
  * YZM2031 - Lab Assignment 1
  * Problem 5: Merge Two Sorted Linked Lists
  * 
- * Student Name: [YOUR NAME HERE]
- * Student ID: [YOUR ID HERE]
+ * Student Name: [Yunus Emre Yılmaz]
+ * Student ID: [24018015]
  * 
  * Instructions: Implement the TODO sections below
  */
