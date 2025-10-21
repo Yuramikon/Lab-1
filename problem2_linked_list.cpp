@@ -73,7 +73,7 @@ public:
         current->next = newNode;
         // 5. Increment size
         size++;
-        
+        }
     }
 
     // Insert at specific position
