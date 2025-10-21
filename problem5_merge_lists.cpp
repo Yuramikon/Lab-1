@@ -47,14 +47,8 @@ Node* mergeSortedLists(Node* list1, Node* list2) {
     
     Node* temp;
     Node* mergedHead;
-    if (list1->data > list2->data) {
-        mergedHead = list2;
-        list2 = list2->next;
-    } 
-    else{
-        mergedHead = list1;
-        list1 = list1->next;
-    }
+    if (list1->data > list2->data) mergedHead = list2;
+    else mergedHead = list1;
     
     while (list1 != nullptr && list2 != nullptr){
         if (list1->data > list2->data){
