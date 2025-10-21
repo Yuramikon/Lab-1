@@ -74,8 +74,6 @@ public:
         if (isEmpty()) throw runtime_error("Queue is empty");
         // 2. Return task at frontIndex
         return tasks[frontIndex];
-        
-        return "";  // Placeholder
     }
 
     // Check if empty
