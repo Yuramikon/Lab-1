@@ -50,8 +50,8 @@ int evaluatePostfix(const string& expression) {
 
     while (ss >> token) {
         if (token == "+" || token == "-" || token == "*" || token == "/") {
-            int var2 = s.pop();
-            int var1 = s.pop();
+            int var2 = s.top(); s.pop();
+            int var1 = s.top(); s.pop();
 
             int result = 0;
             if (token == "+") result = var1 + var2;
